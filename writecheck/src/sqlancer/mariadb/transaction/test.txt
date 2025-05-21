@@ -1,0 +1,15 @@
+CREATE TABLE t(c1 INT, c2 VARCHAR(5));
+INSERT INTO t(c1) VALUES(1), (5);
+
+1
+BEGIN;
+UPDATE t SET c1 = 1, c2 = 't1' WHERE c1 = 5;
+COMMIT;
+
+2
+BEGIN;
+UPDATE t SET c1 = 5, c2 = 't2' WHERE c1 = 1;
+COMMIT;
+
+1-1-2-2-1-2
+END
